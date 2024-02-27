@@ -37,7 +37,9 @@ const Navbar = () => {
             }}
           />
         </SignedIn>
-        <MobileNav />
+        <div className="cursor-pointer">
+          <MobileNav />
+        </div>
       </div>
     </nav>
   );
