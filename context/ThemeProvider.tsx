@@ -1,30 +1,32 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect } from "react";
-
-type ThemeType = "light" | "dark";
-
-type ThemeContextType = {
-  mode: ThemeType;
-  setMode: (mode: ThemeType) => void;
-};
+import { ThemeContextType, ThemeType } from "@/types";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+} from "react";
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [mode, setMode] = useState<ThemeType>("dark");
+  const [mode, setMode] = useState<ThemeType>(localStorage.theme ?? "system");
 
-  const handleThemeChange = () => {
-    if (mode === "dark") {
-      setMode("light");
-      document.documentElement.classList.add("light");
-    } else {
-      setMode("dark");
+  const handleThemeChange = useCallback(() => {
+    if (
+      localStorage.theme === "dark" ||
+      (!("theme" in localStorage) &&
+        window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
       document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
     }
-  };
+  }, []);
 
-  useEffect(() => handleThemeChange(), [mode]);
+  useEffect(() => handleThemeChange(), [mode, handleThemeChange]);
 
   return (
     <ThemeContext.Provider value={{ mode, setMode }}>
