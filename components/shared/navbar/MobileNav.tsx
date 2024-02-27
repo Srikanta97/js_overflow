@@ -17,7 +17,7 @@ import { usePathname } from "next/navigation";
 const NavContent = () => {
   const pathname = usePathname();
   return (
-    <section className="flex h-full flex-col gap-6 pt-16">
+    <section className="flex flex-col gap-6 pt-16">
       {sidebarLinks.map((item) => {
         const isActive =
           (pathname.includes(item.route) && item.route.length > 1) ||
@@ -53,8 +53,8 @@ const MobileNav = () => {
       <SheetTrigger asChild>
         <Image
           src="/assets/icons/hamburger.svg"
-          width={36}
-          height={36}
+          width={32}
+          height={32}
           alt="Menu"
           className="invert-colors sm:hidden"
         />
@@ -75,16 +75,16 @@ const MobileNav = () => {
             <span className="text-primary-500">Overflow</span>
           </p>
         </Link>
-        <div>
+        <div className="no-scrollbar flex h-full flex-col justify-between overflow-auto pb-10">
           <SheetClose asChild>
             <NavContent />
           </SheetClose>
 
           <SignedOut>
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3 pt-5">
               <SheetClose asChild>
                 <Link href="/sign-in">
-                  <Button className="small-medium btn-secondary min-h-[40px] w-full rounded-lg p-3 shadow-none">
+                  <Button className="small-medium btn-secondary no-focus min-h-[40px] w-full rounded-lg p-3 shadow-none">
                     <span className="primary-text-gradient">Log In</span>
                   </Button>
                 </Link>
