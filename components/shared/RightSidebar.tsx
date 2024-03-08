@@ -5,33 +5,33 @@ import RenderTag from "./RenderTag";
 
 const mockQuestions = [
   {
-    _id: 1,
+    _id: "1",
     title: "How is Next JS different from React?",
   },
   {
-    _id: 2,
-    title: "Explain JS prototypes?",
+    _id: "2",
+    title: "Explain JS prototypes",
   },
   {
-    _id: 3,
+    _id: "3",
     title: "What is Server Side Rendering?",
   },
   {
-    _id: 4,
+    _id: "4",
     title: "How is routing handled in Next JS?",
   },
   {
-    _id: 5,
+    _id: "5",
     title: "Which is more popular, Angular or React?",
   },
 ];
 
-const metaPopularTags = [
-  { _id: 1, name: "javascript", totalQuestions: 4 },
-  { _id: 1, name: "next", totalQuestions: 7 },
-  { _id: 1, name: "css", totalQuestions: 4 },
-  { _id: 1, name: "react", totalQuestions: 4 },
-  { _id: 1, name: "typescript", totalQuestions: 5 },
+const mockPopularTags = [
+  { _id: "1", name: "javascript", totalQuestions: 4 },
+  { _id: "2", name: "next", totalQuestions: 7 },
+  { _id: "3", name: "css", totalQuestions: 4 },
+  { _id: "4", name: "react", totalQuestions: 4 },
+  { _id: "5", name: "typescript", totalQuestions: 5 },
 ];
 
 const RightSidebar = () => {
@@ -63,7 +63,7 @@ const RightSidebar = () => {
       <div className="mt-12">
         <h3 className="h3-bold text-dark200_light900">Popular Tags</h3>
         <div className="mt-7 flex flex-wrap gap-3">
-          {metaPopularTags.map((tag) => (
+          {mockPopularTags.map((tag) => (
             <RenderTag
               key={tag._id}
               id={tag._id}
