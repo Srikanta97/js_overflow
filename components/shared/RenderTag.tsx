@@ -2,14 +2,14 @@ import Link from "next/link";
 import React from "react";
 import { Badge } from "../ui/badge";
 
-type Props = {
-  id: number;
+interface Props {
+  id: string;
   name: string;
-  count: number;
-  showCount: boolean;
-};
+  count?: number;
+  showCount?: boolean;
+}
 
-const RenderTag = ({ id, name, count, showCount }: Props) => {
+const RenderTag = ({ id, name, count, showCount = false }: Props) => {
   return (
     <Link href={`/tags/${id}`}>
       <Badge className="subtle-medium background-light800_dark300 text-light400_light500 rounded-md border-none px-4 py-2 uppercase">
